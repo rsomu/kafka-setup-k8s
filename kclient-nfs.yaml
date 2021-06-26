@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kafka-client
+  labels:
+    app: kafka-client
+spec:
+  serviceName: kafkaclient
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-client
+  template:
+    metadata:
+      name: kafka-client
+      labels:
+        app: kafka-client
+    spec:
+      containers:
+      - name: kafka
+        image: solsson/kafka
+        command:
+          - sh
+          - -c
+          - "exec tail -f /dev/null"
+        volumeMounts:
+        - name: fio-vol1
+          mountPath: /vol1
+          subPath: vol1
+        - name: fio-vol2
+          mountPath: /vol2
+          subPath: vol2
+  volumeClaimTemplates:
+  - metadata:
+      name: fio-vol1
+    spec:
+      storageClassName: px-sc-nfs
+      accessModes:
+      - ReadWriteMany 
+      resources:
+        requests:
+          storage: 1Gi
+  - metadata:
+      name: fio-vol2
+    spec:
+      storageClassName: px-sc-nfs
+      accessModes:
+      - ReadWriteMany 
+      resources:
+        requests:
+          storage: 2Gi
