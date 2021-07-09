@@ -1,15 +1,15 @@
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
- name: px-sc-kafka-repl2
+  name: px-sc-kafka-repl2
 provisioner: kubernetes.io/portworx-volume
 allowVolumeExpansion: true
 parameters:
- repl: "2"
- priority_io: "high"
- io_profile: "db_remote"
- cow_ondemand: "true"
- disable_io_profile_protection: "1"
- nodiscard: "false"
- group: "kafka-broker-rep2"
- fg: "false"
+  repl: "2"
+  priority_io: "high"
+  io_profile: "db_remote"
+  cow_ondemand: "true"
+  disable_io_profile_protection: "1"
+  nodiscard: "false"
+  group: "kafka-broker-rep2"
+  fg: "false"
