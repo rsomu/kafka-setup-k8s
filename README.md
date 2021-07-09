@@ -9,9 +9,7 @@ The Kafka brokers expects the storage volume (PVC) to be provisioned out of Port
 If you want to provision the PVC out of different storage option, modify kafka.yaml file.
 
 ## Add-ons
-The script will also setup a Kafka Client to do any operations on Kafka topics.
-
-Included [KafDrop](https://github.com/obsidiandynamics/kafdrop), a Kafka web UI for browsing topics and consumer groups.
+The setup script also creates a Kafka Client to do any operations on Kafka topics as well as a Kafka web UI, [KafDrop](https://github.com/obsidiandynamics/kafdrop),  for browsing topics and consumer groups.
 
 
 
